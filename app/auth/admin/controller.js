@@ -1,5 +1,5 @@
 const i18n = require('i18n');
-const authService = require('../auth_service');
+const authService = require('../service');
 const response = require("../../common/response");
 
 exports.login = async (req, res) => {

@@ -1,6 +1,6 @@
 let auth = require('../middleware/auth');
 const ROLES = require('../common/constants').ROLES;
-const models = require('../models/index');
+const models = require('../../models/index');
 const Errors = require('../common/exceptions');
 const validator = require('./validator');
 const User = models.users;

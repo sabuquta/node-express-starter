@@ -1,5 +1,5 @@
 const moment = require('moment');
-const ROLES = require('../common/constants').ROLES;
+const ROLES = require('../app/common/constants').ROLES;
 
 module.exports = function (sequelize, DataTypes) {
     let User = exports.userSchema = sequelize.define('users', {

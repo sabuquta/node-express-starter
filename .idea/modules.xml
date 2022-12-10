@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ads-backend.iml" filepath="$PROJECT_DIR$/.idea/ads-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/rent-backend.iml" filepath="$PROJECT_DIR$/.idea/rent-backend.iml" />
     </modules>
   </component>
 </project>

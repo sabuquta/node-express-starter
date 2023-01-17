@@ -26,7 +26,8 @@ exports.signup = async (req, res) => {
             password: req.body.password,
             mobile: req.body.mobile,
             full_name: req.body.full_name,
-            role_id: req.body.role
+            role_id: req.body.role,
+            type: req.body.type,
         }
 
         console.log(payload);
@@ -37,6 +38,8 @@ exports.signup = async (req, res) => {
         response.error(res, e, req);
     }
 };
+
+
 //
 // exports.verifyOTP = async (req, res) => {
 //   try {

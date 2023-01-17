@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/admin/auth', require('./app/auth/admin/router'));
+app.use('/api/admin/users', require('./app/users/admin/router'));
 
 
 // set port, listen for requests

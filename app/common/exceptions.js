@@ -32,10 +32,30 @@ class NotFoundException extends ApplicationException {
     }
 }
 
+class EmailAlreadyExists extends ApplicationException {
+    constructor(message, item = '') {
+        super(message || RESPONSES.EMAIL_IS_EXISTS, 401);
+    }
+}
+class MobileIsExists extends ApplicationException {
+    constructor(message, item = '') {
+        super(message || RESPONSES.MOBILE_IS_EXISTS, 401);
+    }
+}
+class InvalidUserToken extends ApplicationException {
+    constructor(message, item = '') {
+        super(message || RESPONSES.INVALID_USER_TOKEN, 401);
+    }
+}
+
 module.exports = {
     InvalidInputException: InvalidInputException,
     InvalidMobileNumberException: InvalidMobileNumberException,
     InvalidEmailOrPasswordException: InvalidEmailOrPasswordException,
     UserNotFoundException: UserNotFoundException,
     NotFoundException: NotFoundException,
+    EmailAlreadyExists : EmailAlreadyExists,
+    MobileIsExists : MobileIsExists,
+    InvalidUserToken : InvalidUserToken
+
 };

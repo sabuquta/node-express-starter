@@ -43,6 +43,21 @@ module.exports = function (sequelize, DataTypes) {
         },
         longitude: {
             type: DataTypes.DECIMAL(18, 12)
+        },
+        isEmailVerified : {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue : false
+        },
+        isEnabled : {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue : true
+        },
+        type : {
+            type: DataTypes.STRING,
+            allowNull : true,
+            defaultValue : "individual" // company
         }
     }, {
         paranoid: true,

@@ -1,13 +1,10 @@
 
-exports.success = (res, obj = null) => {
-    if (obj) {
+exports.success = (res, obj = null, message) => {
         res.status(200).send({
             data : obj,
             status : true,
+            message : message
         });
-    } else {
-        res.status(200).send();
-    }
 };
 
 exports.error = (res, error, req = {}) => {

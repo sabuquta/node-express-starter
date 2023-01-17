@@ -17,8 +17,8 @@ module.exports = {
             },
             {
                 id: 2,
-                role_name_ar: 'المسؤول',
-                role_name_en: 'ADMIN',
+                role_name_ar: 'مزود الخدمة',
+                role_name_en: 'PROVIDER',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },

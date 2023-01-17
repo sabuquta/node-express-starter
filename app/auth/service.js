@@ -3,6 +3,7 @@ const ROLES = require('../common/constants').ROLES;
 const models = require('../../models/index');
 const Errors = require('../common/exceptions');
 const validator = require('./validator');
+const userDao = require('./dao');
 const User = models.users;
 
 exports.login = async (payload) => {
@@ -38,6 +39,14 @@ exports.signup =  async (payload) => {
     let errors = validator.isDataValid(payload);
     if (errors.length > 0) {
         throw new Errors.InvalidInputException(errors);
+    }
+    let isEmailExist = await userDao.getByEmail(payload.email);
+    if(isEmailExist){
+        throw new Errors.EmailAlreadyExists();
+    }
+    let isMobileExist = await userDao.getByMobile(payload.mobile);
+    if(isMobileExist){
+        throw new Errors.MobileIsExists();
     }
     payload.role_id = ROLES[payload.role_id];
     payload.password = await auth.generatePassword(payload.password);

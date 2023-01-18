@@ -20,4 +20,7 @@ router.route('/:id')
 router.route('/:id')
     .delete(authMiddleware.authenticateToken , controller.deleteUserById);
 
+router.route('/:id')
+    .put(authMiddleware.authenticateToken , controller.updateUserById);
+
 module.exports = router;

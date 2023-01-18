@@ -26,12 +26,16 @@ exports.getUserById = async (req, res) => {
 exports.addUser = async (req, res) => {
     try {
         let payload = {
-            email: req.body.email,
-            password: req.body.password,
-            mobile: req.body.mobile,
-            full_name: req.body.full_name,
-            role_id: req.body.role,
-            type: req.body.type,
+            email: {item : req.body.email , required :true},
+            password: {item : req.body.password , required :true} ,
+            mobile: {item : req.body.mobile , required :true},
+            full_name: {item : req.body.full_name , required :true},
+            gender : {item : req.body.gender , required :true},
+            date_of_birth : {item : req.body.date_of_birth , required :true , date : true},
+            latitude : {item : req.body.latitude , required :false},
+            longitude : {item : req.body.longitude , required :false},
+            role_id: {item : req.body.role_id , required :true},
+            type: {item : req.body.type , required : true},
         }
         let user = await userService.addUser(payload);
         response.success(res, user);
@@ -46,10 +50,38 @@ exports.deleteUserById = async (req, res) => {
         let id = req.params.id;
         let user = await userService.deleteUserById(id);
         if(user) {
-            response.success(res, {}, "User Deleted Successfully");
+            response.success(res, {}, "User deleted successfully");
         } else {
-            response.error(res, {status : 410, message : "User already Deleted!"} , req);
+            response.error(res, {status : 410, message : "User already deleted!"} , req);
         }
+    } catch (e) {
+        console.log("e : ", e);
+        response.error(res, e, req);
+    }
+};
+
+
+exports.updateUserById = async (req, res) => {
+    try {
+        let id = req.params.id;
+        let payload = {
+            email: {item : req.body.email , required :true},
+            password: {item : req.body.password , required :true} ,
+            mobile: {item : req.body.mobile , required :true},
+            full_name: {item : req.body.full_name , required :true},
+            gender : {item : req.body.gender , required :true},
+            date_of_birth : {item : req.body.date_of_birth , required :true , date : true},
+            latitude : {item : req.body.latitude , required :false},
+            longitude : {item : req.body.longitude , required :false}
+        }
+        let user = await userService.updateUser(id,payload);
+        if(user){
+            let data = await userService.getUserById(id);
+            response.success(res, data , "User updated successfully");
+        }else {
+            response.error(res, {status : 410, message : "User already updated"} , req);
+        }
+
     } catch (e) {
         console.log("e : ", e);
         response.error(res, e, req);

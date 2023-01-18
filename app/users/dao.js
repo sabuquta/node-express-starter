@@ -39,3 +39,7 @@ exports.deleteUserById = async (id) => {
     let user = await User.destroy({where : {id : id}});
     return user;
 }
+exports.updateUserById = async (id , payload) => {
+    let user = await User.update(payload, {where : {id : id}});
+    return user;
+}

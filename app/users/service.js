@@ -51,12 +51,10 @@ exports.deleteUserById = async (id) => {
 
 exports.updateUser =  async (id, payload) => {
     let errors = await validator.isDataValid(payload);
-    console.log(errors);
     if (errors.length > 0) {
         throw new Errors.InvalidInputException(errors);
     }
     let purePayload = await helpers.getPurePayload(payload);
-
     if(purePayload.password){
         purePayload.password = await auth.generatePassword(purePayload.password);
     }

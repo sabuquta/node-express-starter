@@ -23,4 +23,7 @@ router.route('/:id')
 router.route('/:id')
     .put(authMiddleware.authenticateToken , controller.updateUserById);
 
+router.route('/change-status/:id')
+    .put(authMiddleware.authenticateToken , controller.changeUserStatus);
+
 module.exports = router;

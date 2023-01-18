@@ -87,3 +87,23 @@ exports.updateUserById = async (req, res) => {
         response.error(res, e, req);
     }
 };
+
+exports.changeUserStatus = async (req, res) => {
+    try {
+        let id = req.params.id;
+        let payload = {
+            isEnabled: {item : req.body.is_enable , required :true},
+        }
+        let user = await userService.updateUser(id,payload);
+        if(user){
+            let data = await userService.getUserById(id);
+            response.success(res, data , "User Status changed successfully");
+        }else {
+            response.error(res, {status : 410, message : "User already updated"} , req);
+        }
+
+    } catch (e) {
+        console.log("e : ", e);
+        response.error(res, e, req);
+    }
+};
